@@ -1,9 +1,9 @@
 def prompt(message)
-  Kernel.puts("=> #{message}")  
+  Kernel.puts("=> #{message}")
 end
 
 def valid_number?(num)
-  num.to_i != 0
+  num.to_i.nonzero?
 end
 
 def operation_to_message(op)
@@ -15,7 +15,7 @@ def operation_to_message(op)
   when "3"
     "multiplying "
   when "4"
-    "dividing "  
+    "dividing "
   end
 end
 
@@ -34,20 +34,16 @@ end
 
 prompt("Hello, #{name}!")
 
-loop do #main loop
-
+loop do # main loop
   number1 = ""
-
   loop do
     prompt("What's the first number?")
     number1 = Kernel.gets().chomp()
-
     if valid_number?(number1)
       break
     else
       prompt("that doesnt look like a valid number")
     end
-
   end
 
   number2 = ""
@@ -55,7 +51,6 @@ loop do #main loop
   loop do
     prompt("What's the second number?")
     number2 = Kernel.gets().chomp()
-
     if valid_number?(number2)
       break
     else
@@ -65,9 +60,9 @@ loop do #main loop
 
   operator_prompt = <<-MSG
   what operation do you want to perform?
-    1)add 
-    2)subtract 
-    3)multiply 
+    1)add
+    2)subtract
+    3)multiply
     4)divide
   MSG
 
@@ -76,7 +71,6 @@ loop do #main loop
 
   loop do
     operator = Kernel.gets().chomp()
-
     if %w(1 2 3 4).include?(operator)
       break
     else
@@ -88,14 +82,14 @@ loop do #main loop
 
   result = case operator
            when "1"
-             number1.to_i() + number2.to_i()         
+             number1.to_i() + number2.to_i()
            when "2"
              number1.to_i() - number2.to_i()
            when "3"
              number1.to_i() * number2.to_i()
            when "4"
              number1.to_f() / number2.to_f()
-  end          
+           end
 
   prompt("the result is #{result}")
 
@@ -106,14 +100,3 @@ loop do #main loop
 end
 
 prompt("good bye!")
-
-
-
-
-
-
-
-
-
-
-

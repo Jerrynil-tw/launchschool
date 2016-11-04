@@ -9,8 +9,10 @@ It denpends on the implementation of method to justify what method is doing.
     If the expression evaluates to thruthy, 
     it will return the opposite value, false ,vice versa.
 
-3.  Methods ending in ! perform some permanent or potentially dangerous change
+3.  Methods ending in ! may perform some permanent or cause potentially dangerous change
     <some method>! usually means the method may has side effect and probably will mutate the caller
+
+5.  Methods ending in ? may return a boolean
 
 6.  !! is a method which will return a boolean, 
     !!<some object> is used to turn any object into their boolean equivalent. 

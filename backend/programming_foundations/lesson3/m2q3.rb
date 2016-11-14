@@ -1,12 +1,12 @@
-def add_name(string_name, array_name)
-  string_name += "Jerry Nil"
-  array_name << "Jerry Nil"
+def no_tricky_method(a_string_param, an_array_param)
+  a_string_param += "rutabaga"
+  an_array_param << "rutabaga"
 
-  p string_name
-  p array_name
+  p a_string_param
+  p an_array_param
 end
 
-string_words = "Welcome! "
-array_words = ["Welcome!"]
+my_string = "pumpkins "
+my_array = ["pumpkins"]
+no_tricky_method(my_string, my_array)
 
-add_name(string_words, array_words)

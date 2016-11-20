@@ -87,6 +87,9 @@ def detect_winner(brd)
   nil
 end
 
+player_score = 0
+computer_score = 0
+
 loop do
   board = initialize_board
 
@@ -106,7 +109,11 @@ loop do
   else
     prompt "It's a tie!"
   end
-
+  case detect_winner(board)
+  when "Player" then player_score += 1
+  when "Computer"then computer_score += 1
+  end
+  prompt "You won #{player_score} times, Computer won #{computer_score} times"
   prompt "Do you want to play again?(put in y if you do)"
   answer = gets.chomp
   break unless answer.downcase.start_with?("y")

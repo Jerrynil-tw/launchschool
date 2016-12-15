@@ -52,6 +52,14 @@ def joinor(arr, divider = ', ', connector = 'or')
   end
 end
 
+# def detect_threat(brd)
+#   threat_number = nil
+  
+#     end
+#   end
+#   return threat_number
+# end
+
 def player_places_piece!(brd)
   square = ''
   loop do
@@ -63,8 +71,28 @@ def player_places_piece!(brd)
   brd[square] = PLAYER_MARKER
 end
 
+def find_risk_square(line, brd)
+  if brd.values_at(line[0], line[1], line[2]).count(COMPUTER_MARKER) == 2
+    line.select { |num| brd[num] == INITIAL_MARKER }.first
+  elsif brd.values_at(line[0], line[1], line[2]).count(COMPUTER_MARKER) == 1 &&
+        brd.values_at(line[0], line[1], line[2]).count(INITIAL_MARKER) == 2
+    line.select { |num| brd[num] == INITIAL_MARKER }.sample
+  elsif brd.values_at(line[0], line[1], line[2]).count(PLAYER_MARKER) == 2
+    line.select { |num| brd[num] == INITIAL_MARKER }.first
+  else
+    nil
+  end
+end
+
 def computer_places_piece!(brd)
-  square = empty_squares(brd).sample
+  square = nil
+  WINNING_LINES.each do |line|
+    square = find_risk_square(line, brd)
+    break if find_risk_square(line, brd)
+  end
+    if !square
+      square = empty_squares(brd).sample
+    end
   brd[square] = COMPUTER_MARKER
 end
 
